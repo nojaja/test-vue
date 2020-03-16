@@ -41,6 +41,7 @@
         <CustomResizer></CustomResizer>
       </div>
     </section>
+    <Splitpanes></Splitpanes>
     <Monaco></Monaco>
   </div>
 </template>
@@ -51,6 +52,7 @@ import VerticalPanes from './VerticalPanes.vue'
 import HorizontalPanes from './HorizontalPanes.vue'
 import CustomResizer from './CustomResizer.vue'
 import Monaco from './Monaco.vue'
+import Splitpanes from './Splitpanes.vue'
 
 export default {
   name: 'App',
@@ -59,7 +61,8 @@ export default {
     VerticalPanes,
     HorizontalPanes,
     CustomResizer,
-    Monaco
+    Monaco,
+    Splitpanes
   }
 }
 </script>
@@ -69,8 +72,8 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+/*  text-align: center;*/
+/*  color: #2c3e50;*/
   margin-top: 60px;
 }
 </style>
