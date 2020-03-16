@@ -9,9 +9,13 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "monaco-editor": "^0.20.0",
+    "monaco-editor-vue": "^1.0.9",
+    "monaco-editor-webpack-plugin": "^1.9.0",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
     "vue": "^2.6.11",
+    "vue-monaco": "^1.1.0",
     "vue-multipane": "^0.9.5",
     "webpack": "^4.42.0"
   },

@@ -41,6 +41,7 @@
         <CustomResizer></CustomResizer>
       </div>
     </section>
+    <Monaco></Monaco>
   </div>
 </template>
 
@@ -49,6 +50,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import VerticalPanes from './VerticalPanes.vue'
 import HorizontalPanes from './HorizontalPanes.vue'
 import CustomResizer from './CustomResizer.vue'
+import Monaco from './Monaco.vue'
 
 export default {
   name: 'App',
@@ -56,7 +58,8 @@ export default {
     HelloWorld,
     VerticalPanes,
     HorizontalPanes,
-    CustomResizer
+    CustomResizer,
+    Monaco
   }
 }
 </script>
