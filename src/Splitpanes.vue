@@ -1,20 +1,18 @@
 <template>
   <div>
-    <button @click="hideEditPane = false;hidePreviewPane=true">edit</button>
-    <button @click="hideEditPane = false;hidePreviewPane=false">both</button>
-    <button @click="hideEditPane = true;hidePreviewPane=false">Preview</button>
     <splitpanes style="height: 400px" @resize="handler">
       <pane min-size="10" max-size="40" >
         <NoteList></NoteList>
       </pane>
       <pane v-if="!hideEditPane">
-        <span>2</span>
         <Monaco ref="monaco"></Monaco>
       </pane>
       <pane v-if="!hidePreviewPane">
-        <span>3</span>
       </pane>
     </splitpanes>
+    <button @click="hideEditPane = false;hidePreviewPane=true">edit</button>
+    <button @click="hideEditPane = false;hidePreviewPane=false">both</button>
+    <button @click="hideEditPane = true;hidePreviewPane=false">Preview</button>
   </div>
 </template>
 
@@ -49,7 +47,7 @@ export default {
 .splitpanes .splitpanes__pane {
 }
 
-.splitpanes--vertical>.splitpanes__splitter, .splitpanes--vertical>.splitpanes__splitter {
+.splitpanes--vertical>.splitpanes__splitter {
     width: 7px;
     border-left: 1px solid #eee;
     margin-left: -1px;
@@ -65,7 +63,7 @@ export default {
 .splitpanes--vertical>.splitpanes__splitter:before, .splitpanes--vertical>.splitpanes__splitter:before {
     margin-left: -2px;
 }
-.splitpanes--vertical>.splitpanes__splitter:after, .splitpanes--vertical>.splitpanes__splitter:after, .splitpanes--vertical>.splitpanes__splitter:before, .splitpanes--vertical>.splitpanes__splitter:before {
+.splitpanes--vertical>.splitpanes__splitter:after, .splitpanes--vertical>.splitpanes__splitter:before {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     width: 1px;

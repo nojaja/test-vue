@@ -2,23 +2,43 @@
   <div class="noteListMenu">
     <div class="newNote">+New</div>
     <ul tabindex="0" class="noteList">
-      <li class="noteListItem active"><div class="noteListItem-text"><a href="" draggable="true"><div class="container"><div class="title">Get Started!</div></div></a></div></li>
-      <li class="noteListItem"><div class="noteListItem-text"><a href="" draggable="true"><div class="container"><div class="title">Today's Task</div></div></a></div></li>
-      <li class="noteListItem"><div class="noteListItem-text"><a href="" draggable="true"><div class="container"><div class="title">About our community</div></div></a></div></li>
-      <li class="noteListItem"><div class="noteListItem-text"><a href="" draggable="true"><div class="container"><div class="title">Keyboard shortcuts</div></div></a></div></li>
-      <li class="noteListItem"><div class="noteListItem-text"><a href="" draggable="true"><div class="container"><div class="title">Storage guide</div></div></a></div></li>
-      <li class="noteListItem"><div class="noteListItem-text"><a href="" draggable="true"><div class="container"><div class="title">Template - Brainstorm</div></div></a></div></li>
-      <li class="noteListItem"><div class="noteListItem-text"><a href="" draggable="true"><div class="container"><div class="title">Template - Bugfix Report</div></div></a></div></li>
-      <li class="noteListItem"><div class="noteListItem-text"><a href="" draggable="true"><div class="container"><div class="title">Template - Meeting Notes</div></div></a></div></li>
-      <li class="noteListItem"><div class="noteListItem-text"><a href="" draggable="true"><div class="container"><div class="title">Template - Weekly Planner</div></div></a></div></li>
+      <li class="noteListItem" v-for="item in items" :key="item.uri" v-bind:class="{ active: item.isActive }">
+        <div class="noteListItem-text" :data-uri="item.uri" @click="select(item.uri)">
+            <div class="container">
+              <div class="title">{{item.name}}</div>
+            </div>
+        </div>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-
 export default {
   components: {
+  },
+  data: function () {
+    return {
+      items: [
+        { name: 'いちご', uri: 'note_1583338656491', isActive: true },
+        { name: 'りんご', uri: 'note_1583338656492', isActive: false },
+        { name: 'みかん', uri: 'note_1583338656493', isActive: false },
+        { name: 'Template - Weekly Planner', uri: 'note_1583338656495', isActive: false }
+      ]
+    }
+  },
+  methods: {
+    select: function (uri) {
+      console.log(this, uri)
+      for (const i in this.items) {
+        console.log(this.items[i])
+        if (this.items[i].uri === uri) {
+          this.items[i].isActive = true
+        } else {
+          this.items[i].isActive = false
+        }
+      }
+    }
   }
 }
 </script>
@@ -28,8 +48,8 @@ export default {
     position: relative;
     overflow: hidden;
     overflow-y: scroll;
-    -ms-overflow-style: none;    /* IE, Edge �Ή� */
-    scrollbar-width: none;       /* Firefox �Ή� */
+    -ms-overflow-style: none;    /* IE, Edge 対応 */
+    scrollbar-width: none;       /* Firefox 対応 */
     height: 100%;
 }
 .noteListMenu::-webkit-scrollbar {
@@ -85,6 +105,7 @@ export default {
     box-sizing: border-box;
     margin-block-start: 0;
     padding-inline-start: 0;
+    margin-block-end: 0;
 }
 
 </style>

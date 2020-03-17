@@ -1,12 +1,16 @@
 {
   "name": "test-vue",
   "version": "0.1.0",
+  "description": "vue test",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
   "dependencies": {
     "core-js": "^3.6.4",
     "monaco-editor": "^0.20.0",
