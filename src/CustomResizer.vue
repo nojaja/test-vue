@@ -3,7 +3,6 @@
   <div class="pane">
     <div>
       <h6 class="title is-6">Pane 1</h6>
-      <Monaco ref="monaco"></Monaco>
     </div>
   </div>
   <multipane-resizer></multipane-resizer>
@@ -23,18 +22,11 @@
 
 <script>
 import { Multipane, MultipaneResizer } from 'vue-multipane'
-import Monaco from './Monaco.vue'
 
 export default {
   components: {
     Multipane,
-    MultipaneResizer,
-    Monaco
-  },
-  methods: {
-    handler (pane, container, size) {
-      this.$refs.monaco.resize()
-    }
+    MultipaneResizer
   }
 }
 </script>

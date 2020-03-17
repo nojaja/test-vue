@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Splitpanes></Splitpanes>
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <section class="hero">
@@ -41,8 +42,6 @@
         <CustomResizer></CustomResizer>
       </div>
     </section>
-    <Splitpanes></Splitpanes>
-    <Monaco></Monaco>
   </div>
 </template>
 
@@ -51,7 +50,6 @@ import HelloWorld from './components/HelloWorld.vue'
 import VerticalPanes from './VerticalPanes.vue'
 import HorizontalPanes from './HorizontalPanes.vue'
 import CustomResizer from './CustomResizer.vue'
-import Monaco from './Monaco.vue'
 import Splitpanes from './Splitpanes.vue'
 
 export default {
@@ -61,15 +59,15 @@ export default {
     VerticalPanes,
     HorizontalPanes,
     CustomResizer,
-    Monaco,
     Splitpanes
   }
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p&amp;subset=japanese');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'M PLUS 1p', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 /*  text-align: center;*/
