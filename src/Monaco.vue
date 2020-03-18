@@ -1,9 +1,10 @@
 <template>
-  <MonacoEditor class="editor" ref="editor" v-model="code" language="javascript" />
+  <MonacoEditor class="editor" ref="editor" v-model="code" :options="{automaticLayout: true}" language="markdown" />
 </template>
 
 <script>
 import MonacoEditor from 'vue-monaco'
+import _ from 'lodash'
 
 export default {
   components: {
@@ -11,8 +12,13 @@ export default {
   },
   data () {
     return {
-      code: 'const noop = () => {}'
+      code: '# test  ## hoge'
     }
+  },
+  watch: {
+    code: _.debounce(function (e) {
+      console.log(this.code)
+    }, 300)
   },
   methods: {
     resize () {

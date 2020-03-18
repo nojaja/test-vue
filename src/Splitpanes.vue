@@ -1,18 +1,28 @@
 <template>
   <div>
-    <splitpanes style="height: 400px" @resize="handler">
-      <pane min-size="10" max-size="40" >
+    <div class="wrapper">
+      <div style="width: 200px">
         <NoteList></NoteList>
-      </pane>
-      <pane v-if="!hideEditPane">
+      </div>
+      <div v-bind:style="{ height: this.height-25+'px' , width : '100%' }" >
+        <div class="titleSection">
+          <input placeholder="Title" value="テスト">
+        </div>
+        <splitpanes @resize="handler" firstSplitter>
+        <pane v-if="!hideEditPane" min-size="10" >
         <Monaco ref="monaco"></Monaco>
       </pane>
       <pane v-if="!hidePreviewPane">
+        <Preview></Preview>
       </pane>
     </splitpanes>
+        <div id="footer">
     <button @click="hideEditPane = false;hidePreviewPane=true">edit</button>
     <button @click="hideEditPane = false;hidePreviewPane=false">both</button>
     <button @click="hideEditPane = true;hidePreviewPane=false">Preview</button>
+  </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,29 +31,69 @@ import { Splitpanes, Pane } from 'splitpanes'
 import 'splitpanes/dist/splitpanes.css'
 import NoteList from './NoteList.vue'
 import Monaco from './Monaco.vue'
+import Preview from './Preview.vue'
 
 export default {
   components: {
     Splitpanes,
     Pane,
     Monaco,
-    NoteList
+    NoteList,
+    Preview
   },
   data () {
     return {
       hideEditPane: false,
-      hidePreviewPane: false
+      hidePreviewPane: false,
+      width: window.innerWidth,
+      height: window.innerHeight
     }
   },
   methods: {
     handler (event) {
       this.$refs.monaco.resize()
+    },
+    handleResize: function () {
+      this.width = window.innerWidth
+      this.height = window.innerHeight
     }
+  },
+  mounted: function () {
+    window.addEventListener('resize', this.handleResize)
+  },
+  beforeDestroy: function () {
+    window.removeEventListener('resize', this.handleResize)
   }
 }
 </script>
 
 <style>
+.titleSection {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    border-width: 0px 0px 1px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+}
+.titleSection input {
+    font-size: 24px;
+    height: 100%;
+    background-color: transparent;
+    color: #2c3e50;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    padding: 0px 12px;
+    flex: 1 1 0%;
+    outline: none;
+    box-sizing: border-box;
+}
+.wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
 .splitpanes .splitpanes__pane {
 }
 
@@ -77,5 +127,13 @@ export default {
     background-color: rgba(0,0,0,.15);
     -webkit-transition: background-color .3s;
     transition: background-color .3s;
+}
+#footer {
+  min-height: 32px;
+  height: auto;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #aaa;
 }
 </style>
