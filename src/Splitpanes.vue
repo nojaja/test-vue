@@ -9,18 +9,18 @@
           <input placeholder="Title" value="テスト">
         </div>
         <splitpanes @resize="handler" firstSplitter>
-        <pane v-if="!hideEditPane" min-size="10" >
-        <Monaco ref="monaco"></Monaco>
-      </pane>
-      <pane v-if="!hidePreviewPane">
-        <Preview></Preview>
-      </pane>
-    </splitpanes>
+          <pane v-if="!hideEditPane" min-size="10" >
+            <Monaco ref="monaco"></Monaco>
+          </pane>
+          <pane v-if="!hidePreviewPane">
+            <Preview></Preview>
+          </pane>
+        </splitpanes>
         <div id="footer">
-    <button @click="hideEditPane = false;hidePreviewPane=true">edit</button>
-    <button @click="hideEditPane = false;hidePreviewPane=false">both</button>
-    <button @click="hideEditPane = true;hidePreviewPane=false">Preview</button>
-  </div>
+          <button @click="hideEditPane = false;hidePreviewPane=true">edit</button>
+          <button @click="hideEditPane = false;hidePreviewPane=false">both</button>
+          <button @click="hideEditPane = true;hidePreviewPane=false">Preview</button>
+        </div>
       </div>
     </div>
   </div>
