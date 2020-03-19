@@ -1,5 +1,5 @@
 <template>
-  <MonacoEditor class="editor" ref="editor" v-model="code" :options="{automaticLayout: true}" language="markdown" />
+  <MonacoEditor class="editor" ref="editor" v-model="source" :options="{automaticLayout: true}" language="markdown" />
 </template>
 
 <script>
@@ -10,14 +10,16 @@ export default {
   components: {
     MonacoEditor
   },
-  data () {
-    return {
-      code: '# test  ## hoge'
+  props: {
+    source: {
+      type: String,
+      required: false,
+      default: ''
     }
   },
   watch: {
     code: _.debounce(function (e) {
-      console.log(this.code)
+      console.log(this.source)
     }, 300)
   },
   methods: {

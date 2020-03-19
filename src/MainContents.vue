@@ -1,0 +1,42 @@
+<template>
+  <div>
+    <div class="wrapper">
+      <div style="width: 200px">
+        <NoteList :items="items"></NoteList>
+      </div>
+      <Contents></Contents>
+    </div>
+  </div>
+</template>
+
+<script>
+import NoteList from './NoteList.vue'
+import Contents from './Contents.vue'
+
+export default {
+  components: {
+    NoteList,
+    Contents
+  },
+  data () {
+    return {
+      items: [
+        { name: 'いちご', uri: 'note_1583338656491', isActive: true },
+        { name: 'りんご', uri: 'note_1583338656492', isActive: false },
+        { name: 'みかん', uri: 'note_1583338656493', isActive: false },
+        { name: 'Template - Weekly Planner', uri: 'note_1583338656495', isActive: false }
+      ]
+    }
+  },
+  methods: {
+  }
+}
+</script>
+
+<style>
+.wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+</style>

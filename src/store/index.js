@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     count: 0
   },
-  getters: {// state の参照
+  getters: { // state の参照
     countWithSuffix (state) {
       return `${state.count} 回`
     }

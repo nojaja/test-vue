@@ -17,21 +17,10 @@
 export default {
   components: {
   },
-  data: function () {
-    return {
-      items: [
-        { name: 'いちご', uri: 'note_1583338656491', isActive: true },
-        { name: 'りんご', uri: 'note_1583338656492', isActive: false },
-        { name: 'みかん', uri: 'note_1583338656493', isActive: false },
-        { name: 'Template - Weekly Planner', uri: 'note_1583338656495', isActive: false }
-      ]
-    }
-  },
+  props: ['items'],
   methods: {
-    select: function (uri) {
-      console.log(this, uri)
+    select: function (uri) { // リスト選択時の挙動制御
       for (const i in this.items) {
-        console.log(this.items[i])
         if (this.items[i].uri === uri) {
           this.items[i].isActive = true
         } else {

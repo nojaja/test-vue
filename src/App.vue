@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Splitpanes></Splitpanes>
+    <MainContents></MainContents>
     <div>
       <h1>Counter</h1>
       <div >
@@ -61,7 +61,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import VerticalPanes from './VerticalPanes.vue'
 import HorizontalPanes from './HorizontalPanes.vue'
 import CustomResizer from './CustomResizer.vue'
-import Splitpanes from './Splitpanes.vue'
+import MainContents from './MainContents.vue'
 import store from './store'
 
 export default {
@@ -71,7 +71,7 @@ export default {
     VerticalPanes,
     HorizontalPanes,
     CustomResizer,
-    Splitpanes
+    MainContents
   },
   store,
   computed: {
