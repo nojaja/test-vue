@@ -1,6 +1,17 @@
 <template>
   <div id="app">
     <Splitpanes></Splitpanes>
+    <div>
+      <h1>Counter</h1>
+      <div >
+        <div>
+          {{ showCounter }}
+        </div>
+        <button @click="increment">
+          increment
+        </button>
+      </div>
+    </div>
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <section class="hero">
@@ -51,6 +62,7 @@ import VerticalPanes from './VerticalPanes.vue'
 import HorizontalPanes from './HorizontalPanes.vue'
 import CustomResizer from './CustomResizer.vue'
 import Splitpanes from './Splitpanes.vue'
+import store from './store'
 
 export default {
   name: 'App',
@@ -60,6 +72,17 @@ export default {
     HorizontalPanes,
     CustomResizer,
     Splitpanes
+  },
+  store,
+  computed: {
+    showCounter () {
+      return this.$store.getters.countWithSuffix
+    }
+  },
+  methods: {
+    increment () {
+      this.$store.dispatch('increment')
+    }
   }
 }
 </script>
