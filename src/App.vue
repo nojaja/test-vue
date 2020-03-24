@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <button id="show-modal" @click="showModal = true">Show Modal</button>
-    <!-- use the modal component, pass in the prop -->
-    <modal v-if="showModal" @close="showModal = false">
-      <h3 slot="header">custom header</h3>
-    </modal>
+    <button @click.prevent="showDialog">show</button>
     <MainContents></MainContents>
     <div>
       <h1>Counter</h1>
@@ -67,7 +63,7 @@ import VerticalPanes from './VerticalPanes.vue'
 import HorizontalPanes from './HorizontalPanes.vue'
 import CustomResizer from './CustomResizer.vue'
 import MainContents from './MainContents.vue'
-import Modal from './Modal.vue'
+import DialogHelper from '@/DialogHelper'
 import store from './store'
 
 export default {
@@ -77,15 +73,9 @@ export default {
     VerticalPanes,
     HorizontalPanes,
     CustomResizer,
-    MainContents,
-    Modal
+    MainContents
   },
   store,
-  data () {
-    return {
-      showModal: false
-    }
-  },
   computed: {
     showCounter () {
       return this.$store.getters.countWithSuffix
@@ -94,6 +84,14 @@ export default {
   methods: {
     increment () {
       this.$store.dispatch('increment')
+    },
+    showDialog () {
+      DialogHelper.showDialog(this, {
+        subject: 'Subject',
+        message: 'open temporary dialog sample',
+        ok: () => { console.log('click ok') },
+        cancel: () => { console.log('click cancel') }
+      })
     }
   }
 }
