@@ -1,10 +1,10 @@
 <template>
-  <MonacoEditor class="editor" ref="editor" v-model="source" :options="{automaticLayout: true}" language="markdown" />
+  <MonacoEditor class="editor" ref="editor" v-model="source" @change="change" :options="{automaticLayout: true}" language="markdown" />
 </template>
 
 <script>
 import MonacoEditor from 'vue-monaco'
-import _ from 'lodash'
+// import { debounce } from 'lodash'
 
 export default {
   components: {
@@ -15,16 +15,23 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    onChange: {
+      type: Function,
+      required: false,
+      default: function (value) { console.log(value) }
     }
-  },
-  watch: {
-    code: _.debounce(function (e) {
-      console.log(this.source)
-    }, 300)
   },
   methods: {
     resize () {
       this.$refs.editor.getMonaco().layout()
+    },
+    change (value, event) {
+      this.onChange(value)
+      // console.log(value, event)
+      // debounce(function (e) {
+      //   console.log(e)
+      // }, 300)
     }
   }
 }

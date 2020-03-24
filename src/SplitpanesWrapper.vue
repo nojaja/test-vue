@@ -1,10 +1,10 @@
 <template>
   <splitpanes @resize="handleResize" firstSplitter>
     <pane v-if="!hideEditPane" min-size="10" >
-      <Monaco ref="monaco" :source="source"></Monaco>
+      <Monaco ref="monaco" :source="source" :onChange="onChange"></Monaco>
     </pane>
     <pane v-if="!hidePreviewPane">
-      <Preview></Preview>
+      <Preview :source="source"></Preview>
     </pane>
   </splitpanes>
 </template>
@@ -40,6 +40,9 @@ export default {
     }
   },
   methods: {
+    onChange (value) {
+      this.$store.dispatch('update', value)
+    },
     handleResize (event) { // パネルリサイズ時にmonaco側にリサイズ通知する
       this.$refs.monaco.resize()
     }

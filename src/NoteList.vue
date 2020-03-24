@@ -1,6 +1,6 @@
 <template>
   <div class="noteListMenu">
-    <div class="newNote">+New</div>
+    <div class="newNote"  @click="onNew">+New</div>
     <ul tabindex="0" class="noteList">
       <li class="noteListItem" v-for="item in items" :key="item.uri" v-bind:class="{ active: item.isActive }">
         <div class="noteListItem-text" :data-uri="item.uri" @click="select(item.uri)">
@@ -17,7 +17,23 @@
 export default {
   components: {
   },
-  props: ['items'],
+  props: {
+    items: {
+      type: Array,
+      required: false,
+      default: function () { return [] }
+    },
+    onNew: {
+      type: Function,
+      required: false,
+      default: function () {}
+    },
+    onSelect: {
+      type: Function,
+      required: false,
+      default: function () {}
+    }
+  },
   methods: {
     select: function (uri) { // リスト選択時の挙動制御
       for (const i in this.items) {
@@ -27,6 +43,7 @@ export default {
           this.items[i].isActive = false
         }
       }
+      this.onSelect(uri)
     }
   }
 }

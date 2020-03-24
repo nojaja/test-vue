@@ -1,5 +1,5 @@
 <template>
-  <div><iframe id="child-frame" class="preview" :srcdoc="compiledMarkdown" ></iframe></div>
+  <div class="preview"><iframe id="child-frame" class="preview" :srcdoc="compiledMarkdown" ></iframe></div>
 </template>
 
 <script>
@@ -9,19 +9,37 @@ import emoji from 'markdown-it-emoji'
 export default {
   components: {
   },
-  data () {
-    return {
-      code: '# test  \n## hoge'
+  props: {
+    source: {
+      type: String,
+      required: false,
+      default: '# test  \n## hoge'
     }
   },
   computed: {
     compiledMarkdown: function () {
-      return md({
+      const parseData = md({
         linkify: true,
         typography: true
       })
         .use(emoji)
-        .render(this.code.trim())
+        .render(this.source.trim())
+      const htmlheader = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Tab</title>
+  <link href="./css/github-markdown-css.css" rel="stylesheet"></link>
+</head>
+<body>
+`
+      const htmlfooter = `
+</body>
+</html>
+`
+      return (htmlheader + parseData + htmlfooter)
     }
   },
   methods: {

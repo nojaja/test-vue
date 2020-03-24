@@ -1,7 +1,7 @@
 <template>
   <div v-bind:style="{ height: this.height-25+'px' , width : '100%' }" >
     <div class="titleSection">
-      <input placeholder="Title" value="テスト">
+      <input placeholder="Title" :value="title" @input="updateTitle">
     </div>
     <SplitpanesWrapper :hideEditPane="hideEditPane" :hidePreviewPane="hidePreviewPane" :source="source"></SplitpanesWrapper>
     <Footer>
@@ -23,17 +23,19 @@ export default {
   },
   data () {
     return {
+      source: 'test',
+      title: 'test',
       hideEditPane: false,
       hidePreviewPane: false,
       width: window.innerWidth,
-      height: window.innerHeight,
-      source: '#test'
+      height: window.innerHeight
     }
   },
   methods: {
     handleResize: function () {
-      this.width = window.innerWidth
-      this.height = window.innerHeight
+    },
+    updateTitle (e) {
+
     }
   },
   mounted: function () {

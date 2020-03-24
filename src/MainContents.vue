@@ -2,7 +2,7 @@
   <div>
     <div class="wrapper">
       <div style="width: 200px">
-        <NoteList :items="items"></NoteList>
+        <NoteList :items="items" :onNew="newProject" :onSelect="loadProject"></NoteList>
       </div>
       <Contents></Contents>
     </div>
@@ -29,6 +29,11 @@ export default {
     }
   },
   methods: {
+    newProject () {
+    },
+    loadProject (uri) {
+      console.log('methods : ' + uri)
+    }
   }
 }
 </script>

@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <button id="show-modal" @click="showModal = true">Show Modal</button>
+    <!-- use the modal component, pass in the prop -->
+    <modal v-if="showModal" @close="showModal = false">
+      <h3 slot="header">custom header</h3>
+    </modal>
     <MainContents></MainContents>
     <div>
       <h1>Counter</h1>
@@ -62,6 +67,7 @@ import VerticalPanes from './VerticalPanes.vue'
 import HorizontalPanes from './HorizontalPanes.vue'
 import CustomResizer from './CustomResizer.vue'
 import MainContents from './MainContents.vue'
+import Modal from './Modal.vue'
 import store from './store'
 
 export default {
@@ -71,9 +77,15 @@ export default {
     VerticalPanes,
     HorizontalPanes,
     CustomResizer,
-    MainContents
+    MainContents,
+    Modal
   },
   store,
+  data () {
+    return {
+      showModal: false
+    }
+  },
   computed: {
     showCounter () {
       return this.$store.getters.countWithSuffix
