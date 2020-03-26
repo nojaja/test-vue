@@ -2,6 +2,7 @@
   <div id="app">
     <button @click.prevent="showDialog">show</button>
     <MainContents></MainContents>
+    <global-events @keydown.prevent.ctrl.s="saveProject"></global-events>
     <div>
       <h1>Counter</h1>
       <div >
@@ -63,7 +64,6 @@ import VerticalPanes from './VerticalPanes.vue'
 import HorizontalPanes from './HorizontalPanes.vue'
 import CustomResizer from './CustomResizer.vue'
 import MainContents from './MainContents.vue'
-import DialogHelper from '@/DialogHelper'
 import store from './store'
 
 export default {
@@ -85,13 +85,8 @@ export default {
     increment () {
       this.$store.dispatch('increment')
     },
-    showDialog () {
-      DialogHelper.showDialog(this, {
-        subject: 'Subject',
-        message: 'open temporary dialog sample',
-        ok: () => { console.log('click ok') },
-        cancel: () => { console.log('click cancel') }
-      })
+    saveProject () {
+      this.$toasted.show('Save Project', { position: 'top-center', duration: 900 })
     }
   }
 }

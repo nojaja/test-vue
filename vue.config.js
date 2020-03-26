@@ -1,10 +1,10 @@
-const path = require('path');
-const src = __dirname + "/src";
-const dist = __dirname + "/dist";
-const webpack = require('webpack');
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
-//require('jquery-ui/ui/core.js');
-//require('jquery-ui/ui/widgets/resizable.js');
+const path = require('path')
+const src = __dirname + '/src'
+const dist = __dirname + '/dist'
+const webpack = require('webpack')
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
+// require('jquery-ui/ui/core.js');
+// require('jquery-ui/ui/widgets/resizable.js');
 
 module.exports = {
   configureWebpack: {
@@ -19,4 +19,4 @@ module.exports = {
       })
     ]
   }
-};
+}

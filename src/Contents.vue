@@ -5,9 +5,10 @@
     </div>
     <SplitpanesWrapper :hideEditPane="hideEditPane" :hidePreviewPane="hidePreviewPane" :source="source"></SplitpanesWrapper>
     <Footer>
-      <button @click="hideEditPane = false;hidePreviewPane=true">edit</button>
-      <button @click="hideEditPane = false;hidePreviewPane=false">both</button>
-      <button @click="hideEditPane = true;hidePreviewPane=false">Preview</button>
+      <button @click="hideEditPane = false;hidePreviewPane=true"><unicon name="edit"></unicon></button>
+      <button @click="hideEditPane = false;hidePreviewPane=false"><unicon name="columns"></unicon></button>
+      <button @click="hideEditPane = true;hidePreviewPane=false"><unicon name="eye"></unicon></button>
+      <button @click="this.delete"><unicon name="trash-alt"></unicon></button>
     </Footer>
   </div>
 </template>
@@ -15,6 +16,9 @@
 <script>
 import SplitpanesWrapper from './SplitpanesWrapper.vue'
 import Footer from './Footer.vue'
+import DialogHelper from './DialogHelper.js'
+
+import i18n from './lang'
 
 export default {
   components: {
@@ -35,7 +39,14 @@ export default {
     handleResize: function () {
     },
     updateTitle (e) {
-
+    },
+    delete () {
+      DialogHelper.showDialog(this, {
+        subject: 'Delete',
+        message: i18n.tc('message.Delete'),
+        ok: () => {},
+        cancel: () => {}
+      })
     }
   },
   mounted: function () {
