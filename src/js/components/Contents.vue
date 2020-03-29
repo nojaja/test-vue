@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:style="{ height: this.height-25+'px' , width : '100%' }" >
+  <div v-bind:style="{ height: this.height-30-50+'px' , width : '100%' }" >
     <div class="titleSection">
       <input placeholder="Title" :value="title" @input="updateTitle">
     </div>
@@ -9,21 +9,26 @@
       <button @click="hideEditPane = false;hidePreviewPane=false"><unicon name="columns"></unicon></button>
       <button @click="hideEditPane = true;hidePreviewPane=false"><unicon name="eye"></unicon></button>
       <button @click="this.delete"><unicon name="trash-alt"></unicon></button>
+      <button @click="this.test"><unicon name="trash-alt"></unicon></button>
+      <button @click="this.test2"><unicon name="trash-alt"></unicon></button>
+      <download ref="foo"></download>
     </Footer>
   </div>
 </template>
 
 <script>
-import SplitpanesWrapper from './SplitpanesWrapper.vue'
-import Footer from './Footer.vue'
-import DialogHelper from './DialogHelper.js'
+import SplitpanesWrapper from '@/components/SplitpanesWrapper.vue'
+import Footer from '@/components/Footer.vue'
+import DialogHelper from '@/DialogHelper.js'
+import download from '@/components/Download.vue'
 
-import i18n from './lang'
+import i18n from '@/lang'
 
 export default {
   components: {
     SplitpanesWrapper,
-    Footer
+    Footer,
+    download
   },
   data () {
     return {
@@ -46,6 +51,16 @@ export default {
         message: i18n.tc('message.Delete'),
         ok: () => {},
         cancel: () => {}
+      })
+    },
+    test () {
+      this.$refs.foo.saveAsLegacy('あいうえお')
+    },
+    test2 () {
+      const e = this.$refs.foo.getFileLegacy()
+      console.log(e)
+      e.then(function (result) {
+        console.log(result, result.name, result.text, result.File)
       })
     }
   },

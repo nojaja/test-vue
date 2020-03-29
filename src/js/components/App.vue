@@ -2,7 +2,7 @@
   <div id="app">
     <button @click.prevent="showDialog">show</button>
     <MainContents></MainContents>
-    <global-events @keydown.prevent.ctrl.s="saveProject"></global-events>
+    <global-events @keydown.ctrl.s="saveProject"></global-events>
     <div>
       <h1>Counter</h1>
       <div >
@@ -14,7 +14,7 @@
         </button>
       </div>
     </div>
-    <img alt="Vue logo" src="./assets/logo.png">
+    <img alt="Vue logo" src="../../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <section class="hero">
       <div class="hero-body">
@@ -59,12 +59,12 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import VerticalPanes from './VerticalPanes.vue'
-import HorizontalPanes from './HorizontalPanes.vue'
-import CustomResizer from './CustomResizer.vue'
-import MainContents from './MainContents.vue'
-import store from './store'
+import HelloWorld from '@/components/HelloWorld.vue'
+import VerticalPanes from '@/components/VerticalPanes.vue'
+import HorizontalPanes from '@/components/HorizontalPanes.vue'
+import CustomResizer from '@/components/CustomResizer.vue'
+import MainContents from '@/components/MainContents.vue'
+import store from '@/store'
 
 export default {
   name: 'App',
