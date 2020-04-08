@@ -1,6 +1,9 @@
 /**
-
-e = await app.getFileLegacy();
+  const e = this.$refs.foo.getFileLegacy()
+  console.log(e)
+  e.then(function (result) {
+    console.log(result, result.name, result.text, result.File)
+  })
 ***/
 <template>
   <div>

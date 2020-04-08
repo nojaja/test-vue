@@ -9,8 +9,8 @@
       <button @click="hideEditPane = false;hidePreviewPane=false"><unicon name="columns"></unicon></button>
       <button @click="hideEditPane = true;hidePreviewPane=false"><unicon name="eye"></unicon></button>
       <button @click="this.delete"><unicon name="trash-alt"></unicon></button>
-      <button @click="this.test"><unicon name="trash-alt"></unicon></button>
-      <button @click="this.test2"><unicon name="trash-alt"></unicon></button>
+      <button @click="this.test"><unicon name="export"></unicon></button>
+      <button @click="this.test2"><unicon name="import"></unicon></button>
       <download ref="foo"></download>
     </Footer>
   </div>
@@ -58,9 +58,16 @@ export default {
     },
     test2 () {
       const e = this.$refs.foo.getFileLegacy()
-      console.log(e)
       e.then(function (result) {
-        console.log(result, result.name, result.text, result.File)
+        new Promise((resolve, reject) => {
+          const reader = new FileReader()
+          reader.onload = (event) => {
+            resolve(event.target.result)
+          }
+          reader.readAsText(result)
+        }).then((result) => {
+          console.log(result)
+        })
       })
     }
   },
