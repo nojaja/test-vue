@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div style="width: 200px">
-      <h1 class="h1">設定</h1>
+      <h1 class="h1">Settings</h1>
       <div style="width: 100%">
         <TabList :items="items" :onSelect="selectItem"></TabList>
       </div>
@@ -9,48 +9,87 @@
     <div style="width: 400px">
       <div v-if="currentId === '1'">
         <h1 class="h1">General</h1>
-        <button class="button">ログイン</button>
-        <h3 >ソート</h3>
-        <h3 >アカウント連携</h3>
-        <h3 >インタフェース言語</h3>
-        <Select :items="selectItems"></Select>
-        <div><input type="checkbox" id="checkbox-enable-auto-sync" class="checkbox" checked=""><label for="checkbox-enable-auto-sync" class="label">Enable auto sync</label></div>
-
-        <h3 >インタフェース言語</h3>
+        <h3 class="h3">ソート</h3>
         <select class="option">
-          <option value="de">🇩🇪Deutsch</option>
-          <option value="en-US">🇺🇸English (US)</option>
-          <option value="es-ES">🇪🇸Español (España)</option>
-          <option value="fr-FR">🇫🇷Français (France)</option>
-          <option value="ja">🇯🇵日本語</option>
-          <option value="ko">🇰🇷한국어</option>
-          <option value="pt-BR">🇧🇷Português (BR)</option>
-          <option value="uk-UA">🇺🇦Українська</option>
-          <option value="zh-CN">🇨🇳中文 (CN)</option>
-          <option value="zh-HK">🇭🇰中文 (HK)</option>
-          <option value="zh-TW">🇹🇼中文 (TW)</option>
+          <option value="de">更新日</option>
+          <option value="en-US">作成日</option>
         </select>
-        <div><input type="checkbox" id="checkbox-enable-auto-sync" class="checkbox" checked=""><label for="checkbox-enable-auto-sync" class="label">Enable auto sync</label></div>
+        <h3 class="h3">カバー</h3>
+        <select class="option">
+          <option value="de">5min</option>
+          <option value="en-US">10min</option>
+        </select>
+        <h3 class="h3">インタフェース言語</h3>
+        <Select :items="selectItems"></Select>
+
+        <h3 class="h3">Import Data</h3>
+        <button class="button">Import Data</button>
+        <h3 class="h3">Export Data</h3>
+        <button class="button">Export Data</button>
       </div>
       <div v-else-if="currentId === '2'">
         <h1 class="h1">Editor</h1>
-        <h3 >エディターフォントサイズ</h3>
-        <h3 >エディターフォントファミリー</h3>
-        <h3 >エディターインデントタイプ</h3>
-        <h3 >エディターインデントサイズ</h3>
+        <h3 class="h3">エディターフォントサイズFontSize</h3>
+        <select class="option">
+          <option value="de">19</option>
+          <option value="en-US">24</option>
+        </select>
+        <h3 class="h3">エディターフォントファミリーFontFamily</h3>
+        <select class="option">
+          <option value="de">更新日</option>
+          <option value="en-US">作成日</option>
+        </select>
+        <h3 class="h3">エディターインデントタイプ</h3>
+        <select class="option">
+          <option value="de">tab</option>
+          <option value="en-US">space</option>
+        </select>
+        <h3 class="h3">エディターインデントサイズ</h3>
+        <select class="option">
+          <option value="de">4</option>
+          <option value="en-US">8</option>
+        </select>
+        <h3 class="h3">Font Color</h3>
       </div>
       <div v-else-if="currentId === '3'">
-        <h1 class="h1">Markdown</h1>
-        <h3 >ソート</h3>
-        <h3 >アカウント連携</h3>
-        <h3 >インタフェース言語</h3>
- html  xhtmlOut  breaks  linkify  typographer  highlight
-      </div>
-      <div v-else-if="currentId === '4'">
-        <h1 class="h1">Import</h1>
-        <h3 >ソート</h3>
-        <h3 >アカウント連携</h3>
-        <h3 >インタフェース言語</h3>
+
+        <h3 class="h3">インタフェース言語</h3>
+        <div><input type="checkbox" id="checkbox-enable-auto-sync" class="checkbox" checked="">
+          <label for="checkbox-enable-auto-sync" class="label">Enable html</label>
+        </div>
+        <div><input type="checkbox" id="checkbox-enable-auto-sync" class="checkbox" checked="">
+          <label for="checkbox-enable-auto-sync" class="label">Enable breaks</label>
+        </div>
+        <div><input type="checkbox" id="checkbox-enable-auto-sync" class="checkbox" checked="">
+          <label for="checkbox-enable-auto-sync" class="label">Enable linkify</label>
+        </div>
+        <div><input type="checkbox" id="checkbox-enable-auto-sync" class="checkbox" checked="">
+          <label for="checkbox-enable-auto-sync" class="label">Enable typography</label>
+        </div>
+        <h3 class="h3">拡張</h3>
+        <div><input type="checkbox" id="checkbox-enable-auto-sync" class="checkbox" checked="">
+          <label for="checkbox-enable-auto-sync" class="label">Enable emoji</label>
+        </div>
+        <div><input type="checkbox" id="checkbox-enable-auto-sync" class="checkbox" checked="">
+          <label for="checkbox-enable-auto-sync" class="label">Enable ruby</label>
+        </div>
+        <div><input type="checkbox" id="checkbox-enable-auto-sync" class="checkbox" checked="">
+          <label for="checkbox-enable-auto-sync" class="label">Enable multimdTable</label>
+        </div>
+        <div><input type="checkbox" id="checkbox-enable-auto-sync" class="checkbox" checked="">
+          <label for="checkbox-enable-auto-sync" class="label">Enable multimdTable.multiline</label>
+        </div>
+        <div><input type="checkbox" id="checkbox-enable-auto-sync" class="checkbox" checked="">
+          <label for="checkbox-enable-auto-sync" class="label">Enable multimdTable.rowspan</label>
+        </div>
+        <div><input type="checkbox" id="checkbox-enable-auto-sync" class="checkbox" checked="">
+          <label for="checkbox-enable-auto-sync" class="label">Enable multimdTable.headerless</label>
+        </div>
+
+        <h3 class="h3">multibyte</h3>
+        <div><input type="checkbox" id="checkbox-enable-auto-sync" class="checkbox" checked="">
+          <label for="checkbox-enable-auto-sync" class="label">Enable convert</label>
+        </div>
       </div>
     </div>
   </div>
@@ -73,8 +112,7 @@ export default {
       items: [
         { id: 1, name: 'General', uri: '1', isActive: true },
         { id: 2, name: 'Editor', uri: '2', isActive: false },
-        { id: 3, name: 'Markdown', uri: '3', isActive: false },
-        { id: 4, name: 'Import', uri: '4', isActive: false }
+        { id: 3, name: 'Markdown', uri: '3', isActive: false }
       ],
       selectItems: [
         { name: '🇩🇪Deutsch', value: 'de' },
@@ -107,6 +145,10 @@ export default {
 .h1 {
     margin: 0px;
     padding: 10px 0px;
+    font-size: 24px;
+}
+.h3 {
+    font-size: 12px;
 }
 .checkbox {
     margin-top: 0px;
@@ -116,6 +158,7 @@ export default {
 .label {
     display: inline-block;
     margin-bottom: 0px;
+    font-size: 12px;
 }
 .button {
     background-color: rgb(3, 197, 136);

@@ -21,6 +21,7 @@ import SplitpanesWrapper from '@/components/SplitpanesWrapper.vue'
 import Footer from '@/components/Footer.vue'
 import DialogHelper from '@/DialogHelper.js'
 import download from '@/components/Download.vue'
+import store from '@/store'
 
 import i18n from '@/lang'
 
@@ -30,10 +31,17 @@ export default {
     Footer,
     download
   },
+  store,
+  computed: {
+    source () {
+      return '# test  {test|テスト}  <3 '
+    },
+    title () {
+      return 'test'
+    }
+  },
   data () {
     return {
-      source: 'test',
-      title: 'test',
       hideEditPane: false,
       hidePreviewPane: false,
       width: window.innerWidth,

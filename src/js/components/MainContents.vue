@@ -2,7 +2,7 @@
   <div>
     <div class="wrapper">
       <div style="width: 200px">
-        <NoteList :items="items" :onNew="newProject" :onSelect="loadProject"></NoteList>
+        <NoteList :items="fileList" :onNew="newProject" :onSelect="loadProject"></NoteList>
       </div>
       <Contents></Contents>
     </div>
@@ -12,11 +12,18 @@
 <script>
 import NoteList from '@/components/NoteList.vue'
 import Contents from '@/components/Contents.vue'
+import store from '@/store'
 
 export default {
   components: {
     NoteList,
     Contents
+  },
+  store,
+  computed: {
+    fileList () {
+      return this.items
+    }
   },
   data () {
     return {
@@ -30,9 +37,11 @@ export default {
   },
   methods: {
     newProject () {
+      this.$store.dispatch('newProject')
     },
     loadProject (uri) {
       console.log('methods : ' + uri)
+      this.$store.dispatch('loadProject', uri)
     }
   }
 }

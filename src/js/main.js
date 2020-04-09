@@ -24,6 +24,7 @@ new Vue({
   created: function () {
     // `this` は vm インスタンスを指します
     console.log('created : ' + this.a)
+    this.$store.dispatch('init')
   },
   render: h => h(App)
 }).$mount('#app')
