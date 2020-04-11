@@ -9,9 +9,6 @@
       <button @click="hideEditPane = false;hidePreviewPane=false"><unicon name="columns"></unicon></button>
       <button @click="hideEditPane = true;hidePreviewPane=false"><unicon name="eye"></unicon></button>
       <button @click="this.delete"><unicon name="trash-alt"></unicon></button>
-      <button @click="this.test"><unicon name="export"></unicon></button>
-      <button @click="this.test2"><unicon name="import"></unicon></button>
-      <download ref="foo"></download>
     </Footer>
   </div>
 </template>
@@ -20,7 +17,6 @@
 import SplitpanesWrapper from '@/components/SplitpanesWrapper.vue'
 import Footer from '@/components/Footer.vue'
 import DialogHelper from '@/DialogHelper.js'
-import download from '@/components/Download.vue'
 import store from '@/store'
 
 import i18n from '@/lang'
@@ -28,8 +24,7 @@ import i18n from '@/lang'
 export default {
   components: {
     SplitpanesWrapper,
-    Footer,
-    download
+    Footer
   },
   store,
   computed: {
@@ -59,23 +54,6 @@ export default {
         message: i18n.tc('message.Delete'),
         ok: () => {},
         cancel: () => {}
-      })
-    },
-    test () {
-      this.$refs.foo.saveAsLegacy('あいうえお')
-    },
-    test2 () {
-      const e = this.$refs.foo.getFileLegacy()
-      e.then(function (result) {
-        new Promise((resolve, reject) => {
-          const reader = new FileReader()
-          reader.onload = (event) => {
-            resolve(event.target.result)
-          }
-          reader.readAsText(result)
-        }).then((result) => {
-          console.log(result)
-        })
       })
     }
   },

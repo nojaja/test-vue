@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Slide :isOpen="this.isOpen" :burgerIcon="false" ref="slideMenu" width="600">
+    <Slide :isOpen="this.isOpen" :burgerIcon="false" ref="slideMenu" style="width: 100%;" >
       <slot></slot>
     </Slide>
   </div>
@@ -14,6 +14,11 @@ export default {
   components: {
     Slide
   },
+  data () {
+    return {
+      width: window.innerWidth
+    }
+  },
   props: {
     isOpen: {
       type: Boolean,
@@ -24,13 +29,26 @@ export default {
   computed: {
   },
   methods: {
+    handleResize: function () {
+      console.log('resize')
+      this.width = window.innerWidth
+      // this.$refs.slideMenu.$children[0].width = this.width
+    },
     open (e) {
-      console.log('Open')
+      // console.log('Open')
       e.preventDefault()
       e.stopPropagation()
       // this.$refs.slideMenu.openMenu()
+      // console.log(this.$refs.slideMenu)
+      this.$refs.slideMenu.$children[0].width = this.width
       this.$refs.slideMenu.$children[0].openMenu()
     }
+  },
+  mounted: function () {
+    window.addEventListener('resize', this.handleResize)
+  },
+  beforeDestroy: function () {
+    window.removeEventListener('resize', this.handleResize)
   }
 }
 </script>

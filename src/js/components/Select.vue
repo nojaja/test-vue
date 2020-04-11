@@ -1,7 +1,7 @@
 <template>
   <div>
-    <select class="option">
-      <option v-for="item in items" :value="item.value" :key="item.key">{{item.name}}</option>
+    <select class="option" v-model="selectedInfo">
+      <option v-for="item in dataItems" :value="item.value" :key="item.key">{{item.name}}</option>
     </select>
   </div>
 </template>
@@ -10,11 +10,38 @@
 export default {
   components: {
   },
+  computed: {
+    selectedInfo: {
+      get: function () {
+        return this.dataSelected
+      },
+      set: function (newValue) {
+        this.dataSelected = newValue
+        this.onSelect(newValue)
+      }
+    }
+  },
   props: {
+    selected: {
+      type: String,
+      required: false,
+      default: ''
+    },
     items: {
       type: Array,
       required: false,
       default: function () { return [{ name: 'test', value: '' }] }
+    },
+    onSelect: {
+      type: Function,
+      required: false,
+      default: function (newValue) { console.log(newValue) }
+    }
+  },
+  data () {
+    return {
+      dataSelected: this.selected,
+      dataItems: this.items
     }
   },
   methods: {

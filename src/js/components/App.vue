@@ -1,10 +1,5 @@
 <template>
   <div id="app">
-    <button @click="open"><unicon name="import"></unicon></button>
-    <button @click.prevent="showDialog">show</button>
-    <SlideMenu ref="slideMenu">
-      <SettingPage></SettingPage>
-    </SlideMenu>
     <Menu/>
       <main id="page-wrap">
     </main>
@@ -71,8 +66,6 @@ import VerticalPanes from '@/components/VerticalPanes.vue'
 import HorizontalPanes from '@/components/HorizontalPanes.vue'
 import CustomResizer from '@/components/CustomResizer.vue'
 import MainContents from '@/components/MainContents.vue'
-import SlideMenu from '@/components/SlideMenu.vue'
-import SettingPage from '@/components/SettingPage.vue'
 import store from '@/store'
 
 export default {
@@ -82,9 +75,7 @@ export default {
     VerticalPanes,
     HorizontalPanes,
     CustomResizer,
-    MainContents,
-    SlideMenu,
-    SettingPage
+    MainContents
   },
   props: {
   },
@@ -100,10 +91,6 @@ export default {
     },
     saveProject () {
       this.$toasted.show('Save Project', { position: 'top-center', duration: 900 })
-    },
-    open (e) {
-      console.log('A-open')
-      this.$refs.slideMenu.open(e)
     }
   }
 }

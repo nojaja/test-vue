@@ -10,20 +10,21 @@ const WriteFilePlugin = require('write-file-webpack-plugin')
 // require('jquery-ui/ui/widgets/resizable.js');
 
 module.exports = {
-  publicPath: '/',
-  outputDir: dist,
-  indexPath: 'index.html',
   pages: {
     index: {
       // entry for the page
       entry: 'src/js/main.js',
+      // the source template
+      template: 'html/main.html',
+      // output as dist/index.html
+      filename: 'index.html',
       title: 'New Tab'
     }
   },
   configureWebpack: {
-    // context: src,
+    context: src,
     entry: {
-      main: './src/js/main.js'
+      main: './js/main.js'
     },
     output: {
       filename: '[name].js',
@@ -54,7 +55,6 @@ module.exports = {
             to: dist
           },
           {
-            context: src,
             from: 'css/github-markdown-css.css',
             to: dist + '/css/github-markdown-css.css'
           }
