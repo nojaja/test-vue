@@ -18,7 +18,6 @@ import SplitpanesWrapper from '@/components/SplitpanesWrapper.vue'
 import Footer from '@/components/Footer.vue'
 import DialogHelper from '@/DialogHelper.js'
 import store from '@/store'
-
 import i18n from '@/lang'
 
 export default {
@@ -45,6 +44,8 @@ export default {
   },
   methods: {
     handleResize: function () {
+      this.width = window.innerWidth
+      this.height = window.innerHeight
     },
     updateTitle (e) {
     },
