@@ -10,6 +10,9 @@ const WriteFilePlugin = require('write-file-webpack-plugin')
 // require('jquery-ui/ui/widgets/resizable.js');
 
 module.exports = {
+  devServer: {
+    disableHostCheck: true
+  },
   pages: {
     index: {
       // entry for the page
