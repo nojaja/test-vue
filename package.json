@@ -14,7 +14,7 @@
     "copy-webpack-plugin": "^5.1.1",
     "core-js": "^3.6.5",
     "html-webpack-plugin": "^4.2.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "markdown-it": "^10.0.0",
     "markdown-it-checkbox": "^1.1.0",
     "markdown-it-container": "^2.0.0",
